@@ -36,4 +36,6 @@ It has normal basic configuration to integrate it with AIR based app.
 
 >`TBD`
 
+#### Note -
 
+>` A detailed description for class and methods is also available with doc package . The live view URL is https://cdn.rawgit.com/DevtripAccessManager/DTAM/master/doc/index.html`
