@@ -27,9 +27,11 @@ Just need to copy the SWC and pest in you Flex lib package.
 To initiate access manager you need to add/create three methods with you MXML page **creationComplete_Handler**
 
 ```AS3
-	setAcessVo(); // Optional
-	addAccessListeners(); // Required 
-	accessManager.instance.validateStatus(); // Required
+	private function creationComplete_Handler(evt:Event) : void {
+		setAcessVo();
+		addAccessListeners();
+		accessManager.instance.validateStatus();
+	}
 ````
 
 #### Set Access Manager Data
