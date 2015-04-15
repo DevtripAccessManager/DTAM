@@ -15,8 +15,6 @@ It has normal basic configuration to integrate it with AIR based app.
 3. [Set Access Manager Data](set-access-manager-data)
 4. [Add Access Listeners](#add-access-listeners)
 5. [Configure Access Handler](#configure-access-handler)
-6. [Set Access Manager Data Objects](#set-access-manager-data-objects)
-7. [Validate App State](#validate-app-state)
 
 #### Add SWC
 
@@ -28,31 +26,96 @@ To initiate access manager you need to add/create three methods with you MXML pa
 
 ```AS3
 	private function creationComplete_Handler(evt:Event) : void {
-		setAcessVo();
-		addAccessListeners();
-		accessManager.instance.validateStatus();
+		setAcessVo(); // Optional
+		addAccessListeners(); // Required
+		accessManager.instance.validateStatus(); // Required
 	}
 ````
 
 #### Set Access Manager Data
 
->`TBD`
+This step is optional, if you want to configure the messages with SWC and the max allowed free subscription add/update below function.
+
+```AS3
+	private function setAcessVo():void{
+		accessManager.instance.freeSubscriptionDays = 30;
+		accessManager.instance.keyIncorrectAppGuidMessage = "Used key is not valid for this installation.";
+		accessManager.instance.keyIncorrectAppVersionMessage = "Used key is not valid for this version of app.";
+		accessManager.instance.keyIncorrectEmailMessage = "Used key is not valid for this email id.";
+		accessManager.instance.keyIncorrectMessage = "Incorrect Key for this application.";
+		accessManager.instance.keyValidationSuccessMessage = "Your installed app is activated for this system.";
+	}
+```` 
 
 #### Add Access Listeners
 
->`TBD`
+To add acess events listeners, add following method -
+
+```AS3
+	private function addAccessListeners():void {
+		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_EXPIRED,AccessEventHandler);
+		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_STATUS,AccessEventHandler);
+		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_TOBE_EXPIRED,AccessEventHandler);
+		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_TRIAL_REMAINING,AccessEventHandler);
+		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_KEY_VALIDATED,AccessEventHandler);
+		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_KEY_VALIDATION_ERROR,AccessEventHandler);
+	}
+```` 
+
+Add remove listener function as fallows -
+
+```AS3
+	private function removeAccessListeners():void {
+		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_EXPIRED,AccessEventHandler);
+		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_STATUS,AccessEventHandler);
+		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_TOBE_EXPIRED,AccessEventHandler);
+		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_TRIAL_REMAINING,AccessEventHandler);
+		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_KEY_VALIDATED,AccessEventHandler);
+		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_KEY_VALIDATION_ERROR,AccessEventHandler);
+	}
+```` 
+
 
 #### Configure Access Handler
 
->
+Add follwong handler for access event and configure your required state as per your app need. The below method is used with DTDM installer.
 
-#### Set Access Manager Data Objects
-
->`TBD`
-
-#### Validate App State
-
->`TBD`
+```AS3
+	private function AccessEventHandler(evt : accessEvents) : void {
+		switch(evt.type){
+			case accessEvents.PRODUCT_EXPIRED :
+				download_vs.selectedChild = expired;
+				break;
+			case accessEvents.PRODUCT_STATUS :
+				devtripVo.instance.productStatus = evt.params._productStatus;
+				if(devtripVo.instance.productStatus.product_status == accessManager.instance.appRegisteredStatusString){
+					download_vs.selectedChild = downloader;
+					removeAccessListeners();
+				}
+				break;
+			case accessEvents.PRODUCT_TOBE_EXPIRED :
+			case accessEvents.PRODUCT_TRIAL_REMAINING :
+				download_vs.selectedChild = trial;
+				devtripVo.instance.remainingTime = "Remaining -: " 
+				+ evt.params.day + " Day, "
+				+ Math.floor(Number(evt.params.minutes)/60) +"Hours and " 
+				+ (Number(evt.params.minutes)%60) +" Minutes.";
+				break;
+			case accessEvents.PRODUCT_KEY_VALIDATION_ERROR:
+			case accessEvents.PRODUCT_KEY_VALIDATED:
+				download_vs.selectedChild = registrationmessage;
+				if(evt.params.success){
+					status.text = evt.params.message;
+				}else{
+					errorIdlabel.text = "Error id : ";
+					errorIdmesage.text = evt.params.id;
+					errormessagelabel.text = "Error message : ";
+					errormessagemessage.text = evt.params.message;
+				}
+				break;
+		}
+	}
+```` 
 
 #### Note -
 
