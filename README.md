@@ -119,7 +119,7 @@ Add follwong handler for access event and configure your required state as per y
 
 ## Event Description
 
-Access manager SWC dispatch following Events which description is as fallows -
+Access manager SWC dispatch following Events, whose description is as fallows -
 
 6. [PRODUCT STATUS](#product-status)
 7. [PRODUCT EXPIRED](#product-expired)
