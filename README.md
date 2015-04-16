@@ -10,11 +10,11 @@ This packages provide an access manager SWC component, which can easily be insta
 
 It has normal basic configuration to integrate it with AIR based app. 
 
-1. [Add SWC](#add-swc)
-2. [Initiate Access Manager](initiate-access-manager)
-3. [Set Access Manager Data](set-access-manager-data)
-4. [Add Access Listeners](#add-access-listeners)
-5. [Configure Access Handler](#configure-access-handler)
+C 1. [Add SWC](#add-swc)
+C 2. [Initiate Access Manager](initiate-access-manager)
+C 3. [Set Access Manager Data](set-access-manager-data)
+C 4. [Add Access Listeners](#add-access-listeners)
+C 5. [Configure Access Handler](#configure-access-handler)
 
 ## Event Description
 
