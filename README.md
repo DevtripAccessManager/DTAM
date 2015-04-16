@@ -16,6 +16,17 @@ It has normal basic configuration to integrate it with AIR based app.
 4. [Add Access Listeners](#add-access-listeners)
 5. [Configure Access Handler](#configure-access-handler)
 
+## Event Description
+
+Access manager SWC dispatch following Events which description is as fallows -
+
+1. [PRODUCT_STATUS](#product-status)
+2. [PRODUCT_EXPIRED](#product-expired)
+3. [PRODUCT_TOBE_EXPIRED](#product-tobe-expired)
+4. [PRODUCT_TRIAL_REMAINING](#product-trial-remaining)
+5. [PRODUCT_KEY_VALIDATION_ERROR](#product-key-validation-error)
+6. [PRODUCT_KEY_VALIDATED](#product-key-validated)
+
 #### Add SWC
 
 Just need to copy the SWC and pest in you Flex lib package.
@@ -117,6 +128,31 @@ Add follwong handler for access event and configure your required state as per y
 	}
 ```` 
 
+#### PRODUCT_STATUS
+
+>`TBD`
+
+#### PRODUCT_EXPIRED
+
+>`TBD`
+
+#### PRODUCT_TOBE_EXPIRED
+
+>`TBD`
+
+#### PRODUCT_TRIAL_REMAINING
+
+>`TBD`
+
+#### PRODUCT_KEY_VALIDATION_ERROR
+
+>`TBD`
+
+#### PRODUCT_KEY_VALIDATED
+
+>`TBD`
+
 #### Note -
 
 >` A detailed description for class and methods is also available with doc package . The live view URL is https://cdn.rawgit.com/DevtripAccessManager/DTAM/master/doc/index.html`
+
