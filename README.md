@@ -16,17 +16,6 @@ It has normal basic configuration to integrate it with AIR based app.
 4. [Add Access Listeners](#add-access-listeners)
 5. [Configure Access Handler](#configure-access-handler)
 
-## Event Description
-
-Access manager SWC dispatch following Events which description is as fallows -
-
-6. [PRODUCT STATUS](#product-status)
-7. [PRODUCT EXPIRED](#product-expired)
-8. [PRODUCT TOBE EXPIRED](#product-tobe-expired)
-9. [PRODUCT TRIAL REMAINING](#product-trial-remaining)
-10. [PRODUCT KEY VALIDATION ERROR](#product-key-validation-error)
-11. [PRODUCT KEY VALIDATED](#product-key-validated)
-
 #### Add SWC
 
 Just need to copy the SWC and pest in you Flex lib package.
@@ -128,11 +117,22 @@ Add follwong handler for access event and configure your required state as per y
 	}
 ```` 
 
+## Event Description
+
+Access manager SWC dispatch following Events which description is as fallows -
+
+6. [PRODUCT STATUS](#product-status)
+7. [PRODUCT EXPIRED](#product-expired)
+8. [PRODUCT TOBE EXPIRED](#product-tobe-expired)
+9. [PRODUCT TRIAL REMAINING](#product-trial-remaining)
+10. [PRODUCT KEY VALIDATION ERROR](#product-key-validation-error)
+11. [PRODUCT KEY VALIDATED](#product-key-validated)
+
 #### PRODUCT STATUS
 
 >`PRODUCT_STATUS`
 
-This event will be dispatched when product validation is done. With status objct with the event params. This object includes following - 
+This event will be dispatched when product access validation is done on startup. This will have **_productStatus** objct with the event params, and this object includes following - 
 
 installation_date, product_id, product_key, product_validity, product_status and product_guid.
 
