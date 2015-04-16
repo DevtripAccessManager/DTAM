@@ -20,12 +20,12 @@ It has normal basic configuration to integrate it with AIR based app.
 
 Access manager SWC dispatch following Events which description is as fallows -
 
-6. [PRODUCT_STATUS](#product-status)
-7. [PRODUCT_EXPIRED](#product-expired)
-8. [PRODUCT_TOBE_EXPIRED](#product-tobe-expired)
-9. [PRODUCT_TRIAL_REMAINING](#product-trial-remaining)
-10. [PRODUCT_KEY_VALIDATION_ERROR](#product-key-validation-error)
-11. [PRODUCT_KEY_VALIDATED](#product-key-validated)
+6. [PRODUCT STATUS](#product-status)
+7. [PRODUCT EXPIRED](#product-expired)
+8. [PRODUCT TOBE EXPIRED](#product-tobe-expired)
+9. [PRODUCT TRIAL REMAINING](#product-trial-remaining)
+10. [PRODUCT KEY VALIDATION ERROR](#product-key-validation-error)
+11. [PRODUCT KEY VALIDATED](#product-key-validated)
 
 #### Add SWC
 
@@ -128,29 +128,43 @@ Add follwong handler for access event and configure your required state as per y
 	}
 ```` 
 
-#### PRODUCT_STATUS
+#### PRODUCT STATUS
 
->`TBD`
+>`PRODUCT_STATUS`
 
-#### PRODUCT_EXPIRED
+This event will be dispatched when product validation is done. With status objct with the event params. This object includes following - 
 
->`TBD`
+installation_date, product_id, product_key, product_validity, product_status and product_guid.
 
-#### PRODUCT_TOBE_EXPIRED
+#### PRODUCT EXPIRED
 
->`TBD`
+>`PRODUCT_EXPIRED`
 
-#### PRODUCT_TRIAL_REMAINING
+This event will be dispatched on startup, when product free use time is elapsed.
 
->`TBD`
+#### PRODUCT TOBE EXPIRED
 
-#### PRODUCT_KEY_VALIDATION_ERROR
+>`PRODUCT_TOBE_EXPIRED`
 
->`TBD`
+This event is dispatched on startup, when product trial is to be expired in next 5 days.
 
-#### PRODUCT_KEY_VALIDATED
+#### PRODUCT TRIAL REMAINING
 
->`TBD`
+>`PRODUCT_TRIAL_REMAINING`
+
+This event is always dispatched with free version of app, with remining time of free use subscription.
+
+#### PRODUCT KEY VALIDATION ERROR
+
+>`PRODUCT_KEY_VALIDATION_ERROR`
+
+This Event is dispatched with product key activation process, when key is not validated successfully with app.
+
+#### PRODUCT KEY VALIDATED
+
+>`PRODUCT_KEY_VALIDATED`
+
+This event will be dispatched with key validation process, if it is succedded. 
 
 #### Note -
 
