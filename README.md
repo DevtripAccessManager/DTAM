@@ -10,22 +10,22 @@ This packages provide an access manager SWC component, which can easily be insta
 
 It has normal basic configuration to integrate it with AIR based app. 
 
-C1. [Add SWC](#add-swc)
-C2. [Initiate Access Manager](initiate-access-manager)
-C3. [Set Access Manager Data](set-access-manager-data)
-C4. [Add Access Listeners](#add-access-listeners)
-C5. [Configure Access Handler](#configure-access-handler)
+1. [Add SWC](#add-swc)
+2. [Initiate Access Manager](initiate-access-manager)
+3. [Set Access Manager Data](set-access-manager-data)
+4. [Add Access Listeners](#add-access-listeners)
+5. [Configure Access Handler](#configure-access-handler)
 
 ## Event Description
 
 Access manager SWC dispatch following Events which description is as fallows -
 
-1. [PRODUCT_STATUS](#product-status)
-2. [PRODUCT_EXPIRED](#product-expired)
-3. [PRODUCT_TOBE_EXPIRED](#product-tobe-expired)
-4. [PRODUCT_TRIAL_REMAINING](#product-trial-remaining)
-5. [PRODUCT_KEY_VALIDATION_ERROR](#product-key-validation-error)
-6. [PRODUCT_KEY_VALIDATED](#product-key-validated)
+a. [PRODUCT_STATUS](#product-status)
+b. [PRODUCT_EXPIRED](#product-expired)
+c. [PRODUCT_TOBE_EXPIRED](#product-tobe-expired)
+d. [PRODUCT_TRIAL_REMAINING](#product-trial-remaining)
+e. [PRODUCT_KEY_VALIDATION_ERROR](#product-key-validation-error)
+f. [PRODUCT_KEY_VALIDATED](#product-key-validated)
 
 #### Add SWC
 
