@@ -20,12 +20,12 @@ It has normal basic configuration to integrate it with AIR based app.
 
 Access manager SWC dispatch following Events which description is as fallows -
 
-a. [PRODUCT_STATUS](#product-status)
-b. [PRODUCT_EXPIRED](#product-expired)
-c. [PRODUCT_TOBE_EXPIRED](#product-tobe-expired)
-d. [PRODUCT_TRIAL_REMAINING](#product-trial-remaining)
-e. [PRODUCT_KEY_VALIDATION_ERROR](#product-key-validation-error)
-f. [PRODUCT_KEY_VALIDATED](#product-key-validated)
+6. [PRODUCT_STATUS](#product-status)
+7. [PRODUCT_EXPIRED](#product-expired)
+8. [PRODUCT_TOBE_EXPIRED](#product-tobe-expired)
+9. [PRODUCT_TRIAL_REMAINING](#product-trial-remaining)
+10. [PRODUCT_KEY_VALIDATION_ERROR](#product-key-validation-error)
+11. [PRODUCT_KEY_VALIDATED](#product-key-validated)
 
 #### Add SWC
 
