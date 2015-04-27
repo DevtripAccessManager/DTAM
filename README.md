@@ -2,6 +2,14 @@
 
 Provide ActionScript SWC to integrate access management functionality with AIR based application developed in AS3.
 
+> `DTAccessManager-Chromeless.swc`
+
+This SWC will provide the access management functionality which is based on use time/duration (say 30 days). And it will be reffered as **case-1** with below documentation.
+
+> `DTAccessManager-Chromeless-time+use.swc`
+
+This SWC will provide the access management functionality which is based on use time/duration (say 30 days) or use count (say 5 [this need to be set on specific event of the app]). And it will be reffered as **case-2** with below documentation.
+
 ## Goal
 
 This packages provide an access manager SWC component, which can easily be installed with AIR based applications, being developed using AS3 and/or MXML.
@@ -36,6 +44,8 @@ To initiate access manager you need to add/create three methods with you MXML pa
 
 This step is optional, if you want to configure the messages with SWC and the max allowed free subscription add/update below function.
 
+> case-1
+
 ```AS3
 	private function setAcessVo():void{
 		accessManager.instance.freeSubscriptionDays = 30;
@@ -45,7 +55,21 @@ This step is optional, if you want to configure the messages with SWC and the ma
 		accessManager.instance.keyIncorrectMessage = "Incorrect Key for this application.";
 		accessManager.instance.keyValidationSuccessMessage = "Your installed app is activated for this system.";
 	}
-```` 
+```
+
+> case-2
+
+```AS3
+	private function setAcessVo():void{
+		accessManager.instance.freeSubscriptionCount = 5;
+		accessManager.instance.keyIncorrectAppGuidMessage = "Used key is not valid for this installation.";
+		accessManager.instance.keyIncorrectAppVersionMessage = "Used key is not valid for this version of app.";
+		accessManager.instance.keyIncorrectEmailMessage = "Used key is not valid for this email id.";
+		accessManager.instance.keyIncorrectMessage = "Incorrect Key for this application.";
+		accessManager.instance.keyValidationSuccessMessage = "Your installed app is activated for this system.";
+	}
+
+```
 
 #### Add Access Listeners
 
@@ -79,6 +103,8 @@ Add remove listener function as fallows -
 #### Configure Access Handler
 
 Add follwong handler for access event and configure your required state as per your app need. The below method is used with DTDM installer.
+
+> case-1
 
 ```AS3
 	private function AccessEventHandler(evt : accessEvents) : void {
@@ -115,7 +141,48 @@ Add follwong handler for access event and configure your required state as per y
 				break;
 		}
 	}
-```` 
+```
+
+> case-2
+
+```AS3
+	private function AccessEventHandler(evt : accessEvents) : void {
+		switch(evt.type){
+			case accessEvents.PRODUCT_EXPIRED :
+				this.currentState = "expired";
+				break;
+			case accessEvents.PRODUCT_STATUS :
+				trace(evt.params._productStatus + "   evt.params._productStatus")
+				devtripVo.instance.productStatus = evt.params._productStatus;
+				if(devtripVo.instance.productStatus.product_status == accessManager.instance.appRegisteredStatusString){
+					this.currentState = "keyGen";
+					removeAccessListeners();
+				}
+				break;
+			case accessEvents.PRODUCT_TOBE_EXPIRED :
+			case accessEvents.PRODUCT_TRIAL_REMAINING :
+				trace(evt.params.useCount + " evt.params.usecount ");
+				this.currentState = "trial";
+				devtripVo.instance.remainingUseCount = "Remaining -: " 
+				+ evt.params.useCount + " key can be generated with this app. ";
+				break;
+			case accessEvents.PRODUCT_KEY_VALIDATION_ERROR:
+			case accessEvents.PRODUCT_KEY_VALIDATED:
+				this.currentState = "registrationmessage";
+				if(evt.params.success){
+					status.text = evt.params.message;
+				}else{
+					errorIdlabel.text = "Error id : ";
+					errorIdmesage.text = evt.params.id;
+					errormessagelabel.text = "Error message : ";
+					errormessagemessage.text = evt.params.message;
+				}
+				break;
+		}
+	}
+
+```
+
 
 ## Event Description
 
