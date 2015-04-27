@@ -23,6 +23,8 @@ It has normal basic configuration to integrate it with AIR based app.
 3. [Set Access Manager Data](set-access-manager-data)
 4. [Add Access Listeners](#add-access-listeners)
 5. [Configure Access Handler](#configure-access-handler)
+6. [Manage Registration](#manage-registration)
+7. [Update Use](#update-use)
 
 #### Add SWC
 
@@ -182,7 +184,55 @@ Add follwong handler for access event and configure your required state as per y
 	}
 
 ```
+#### Manage Registration
 
+Need to add following code to manage access managemment for a key request and to register the product using a key.
+
+```AS3
+
+	private function Button_clickHandler(event:MouseEvent):void
+	{
+		switch(event.currentTarget.id){
+			case "register":
+				accessManager.instance.validateKey(emailuser.text,keyPath);
+				break;
+			case "generateGUID":
+				generatedKeytxt.toolTip = "Key is copied to clip board.";
+				generatedKeytxt.text = accessManager.instance.requestKey();
+				Clipboard.generalClipboard.clear(); 
+				Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, generatedKeytxt.text, false); 
+				break;
+		}
+	}
+
+```
+
+#### Update Use
+
+Need to add following code to update use of app-
+
+> case-1
+
+```AS3
+
+	/**
+	*	No code is required for this version.
+	*	It will manage the use days from the date of first installation,
+	*	and SWC will trigger specific events.
+	**/  
+
+```
+
+> case-2
+
+```AS3
+	/**
+	*	To update use count need to add following code,
+	*	with specific event which you will define as app used.
+	**/
+	accessManager.instance.updateUseCount();
+
+```
 
 ## Event Description
 
