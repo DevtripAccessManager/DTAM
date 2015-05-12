@@ -158,7 +158,6 @@ Add follwong handler for access event and configure your required state as per y
 				devtripVo.instance.productStatus = evt.params._productStatus;
 				if(devtripVo.instance.productStatus.product_status == accessManager.instance.appRegisteredStatusString){
 					this.currentState = "keyGen";
-					removeAccessListeners();
 				}
 				break;
 			case accessEvents.PRODUCT_TOBE_EXPIRED :
