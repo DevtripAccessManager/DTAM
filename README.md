@@ -152,9 +152,10 @@ Add follwong handler for access event and configure your required state as per y
 		switch(evt.type){
 			case accessEvents.PRODUCT_EXPIRED :
 				this.currentState = "expired";
+				devtripVo.instance.remainingUseCount = "You use count for this app is finished.";
 				break;
 			case accessEvents.PRODUCT_STATUS :
-				trace(evt.params._productStatus + "   evt.params._productStatus")
+				trace(evt.params._productStatus.product_status + "   evt.params._productStatus")
 				devtripVo.instance.productStatus = evt.params._productStatus;
 				if(devtripVo.instance.productStatus.product_status == accessManager.instance.appRegisteredStatusString){
 					this.currentState = "keyGen";
@@ -171,12 +172,9 @@ Add follwong handler for access event and configure your required state as per y
 			case accessEvents.PRODUCT_KEY_VALIDATED:
 				this.currentState = "registrationmessage";
 				if(evt.params.success){
-					status.text = evt.params.message;
-				}else{
-					errorIdlabel.text = "Error id : ";
-					errorIdmesage.text = evt.params.id;
-					errormessagelabel.text = "Error message : ";
-					errormessagemessage.text = evt.params.message;
+					registrationmessage.statusTxt(evt.params.message);
+				} else {
+					registrationmessage.errorHandler(evt.params.id, evt.params.message);
 				}
 				break;
 		}
