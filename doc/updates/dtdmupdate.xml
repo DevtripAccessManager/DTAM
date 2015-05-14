@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<update xmlns="http://ns.adobe.com/air/framework/update/description/1.0">
+	
+	 <!-- Mac update -->
+	 <mac>
+		<version>1.9</version>
+		<url>http://localhost/updater/air_updater.air</url>
+		<description><![CDATA[
+			This version has fixes for the following know issues:
+			*First issue
+			*Second issue   
+		]]>
+		</description>
+	</mac>
+	
+	<!-- Win update -->
+     <exe>
+         <version>1.9</version>
+		<url>http://localhost/updater/air_updater.air</url>
+		<description><![CDATA[
+			This version has fixes for the following know issues:
+			*First issue
+			*Second issue   
+		]]>
+		</description>
+		
+     </exe>
+
+        <!-- Debian update -->
+        <deb>
+            <version>0.4.045</version>
+            <url>https://www.videopong.net/vpdudefiles/vpDude.deb</url>
+        <description>
+            <![CDATA[
+				New in version 0.4.045: 
+				* AIR 2.6
+                * This a Debian update
+                ]]>
+        </description>
+        </deb>
+
+        <!-- Redhat/Fedora/OpenSUSE update -->
+        <rpm>
+           <version>0.4.045</version>
+           <url>https://www.videopong.net/vpdudefiles/vpDude.rpm</url>
+       <description>
+            <![CDATA[
+				New in version 0.4.045: 
+				* AIR 2.6
+                * This a Redhat/Fedora/OpenSUSE update
+                ]]>
+        </description>
+        </rpm>
+        
+</update>
