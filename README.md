@@ -51,6 +51,7 @@ This step is optional, if you want to configure the messages with SWC and the ma
 ```AS3
 	private function setAcessVo():void{
 		accessManager.instance.freeSubscriptionDays = 30;
+		accessManager.instance.freeSubscriptionCount = 0; // Need to set the count parameter as 0.
 		accessManager.instance.keyIncorrectAppGuidMessage = "Used key is not valid for this installation.";
 		accessManager.instance.keyIncorrectAppVersionMessage = "Used key is not valid for this version of app.";
 		accessManager.instance.keyIncorrectEmailMessage = "Used key is not valid for this email id.";
