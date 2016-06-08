@@ -46,9 +46,27 @@ Format: 1.52
 # --------------------------------------------------------------------------
 
 
+File: accessConst  (com\devtrip\access\vo\accessConst.as)
+File: accessDataBase  (com\devtrip\access\db\accessDataBase.as)
 File: AccessEventDispatcher  (com\devtrip\access\events\AccessEventDispatcher.as)
 File: accessEvents  (com\devtrip\access\events\accessEvents.as)
 File: accessManager  (com\devtrip\access\accessManager.as)
+File: accessVo  (com\devtrip\access\vo\accessVo.as)
+
+Group: Ascrypt3  {
+
+   File: Base64  (com\devtrip\access\ascrypt3\Base64.as)
+   File: Base8  (com\devtrip\access\ascrypt3\Base8.as)
+   File: GUID  (com\devtrip\access\ascrypt3\GUID.as)
+   File: RC4  (com\devtrip\access\ascrypt3\RC4.as)
+   File: Rijndael  (com\devtrip\access\ascrypt3\Rijndael.as)
+   File: SHA1  (com\devtrip\access\ascrypt3\SHA1.as)
+   File: TEA  (com\devtrip\access\ascrypt3\TEA.as)
+   }  # Group: Ascrypt3
+
+File: keyRequest  (com\devtrip\access\key\keyRequest.as)
+File: keyValidator  (com\devtrip\access\key\keyValidator.as)
+File: localSO  (com\devtrip\access\so\localSO.as)
 
 Group: Index  {
 

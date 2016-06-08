@@ -80,6 +80,7 @@ To add acess events listeners, add following method -
 
 ```AS3
 	private function addAccessListeners():void {
+		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_FIRST_INSTALLATION,AccessEventHandler);
 		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_EXPIRED,AccessEventHandler);
 		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_STATUS,AccessEventHandler);
 		AccessEventDispatcher.getInstance().addEventListener(accessEvents.PRODUCT_TOBE_EXPIRED,AccessEventHandler);
@@ -93,6 +94,7 @@ Add remove listener function as fallows -
 
 ```AS3
 	private function removeAccessListeners():void {
+		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_FIRST_INSTALLATION,AccessEventHandler);
 		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_EXPIRED,AccessEventHandler);
 		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_STATUS,AccessEventHandler);
 		AccessEventDispatcher.getInstance().removeEventListener(accessEvents.PRODUCT_TOBE_EXPIRED,AccessEventHandler);
@@ -112,6 +114,9 @@ Add follwong handler for access event and configure your required state as per y
 ```AS3
 	private function AccessEventHandler(evt : accessEvents) : void {
 		switch(evt.type){
+			case accessEvents.PRODUCT_FIRST_INSTALLATION:
+				//add tracking code for first installation
+				break;
 			case accessEvents.PRODUCT_EXPIRED :
 				download_vs.selectedChild = expired;
 				break;
@@ -151,6 +156,9 @@ Add follwong handler for access event and configure your required state as per y
 ```AS3
 	private function AccessEventHandler(evt : accessEvents) : void {
 		switch(evt.type){
+			case accessEvents.PRODUCT_FIRST_INSTALLATION:
+				//add tracking code for first installation
+				break;
 			case accessEvents.PRODUCT_EXPIRED :
 				this.currentState = "expired";
 				devtripVo.instance.remainingUseCount = "You use count for this app is finished.";
@@ -236,12 +244,19 @@ Need to add following code to update use of app-
 
 Access manager SWC dispatch following Events, whose description is as fallows -
 
-6. [PRODUCT STATUS](#product-status)
-7. [PRODUCT EXPIRED](#product-expired)
-8. [PRODUCT TOBE EXPIRED](#product-tobe-expired)
-9. [PRODUCT TRIAL REMAINING](#product-trial-remaining)
-10. [PRODUCT KEY VALIDATION ERROR](#product-key-validation-error)
-11. [PRODUCT KEY VALIDATED](#product-key-validated)
+6. [PRODUCT FIRST INSTALLATION](#product-first-installation)
+7. [PRODUCT STATUS](#product-status)
+8. [PRODUCT EXPIRED](#product-expired)
+9. [PRODUCT TOBE EXPIRED](#product-tobe-expired)
+10. [PRODUCT TRIAL REMAINING](#product-trial-remaining)
+11. [PRODUCT KEY VALIDATION ERROR](#product-key-validation-error)
+12. [PRODUCT KEY VALIDATED](#product-key-validated)
+
+#### PRODUCT FIRST INSTALLATION
+
+>`PRODUCT_FIRST_INSTALLATION`
+
+This event will be dispatched when product is installed on user mechine first time. User can add tracking code at this event for first time installation.
 
 #### PRODUCT STATUS
 
